@@ -1,2 +1,4 @@
 # Plugins
-vue
+---------
+# vue plugin
+---------
