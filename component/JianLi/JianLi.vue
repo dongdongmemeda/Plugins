@@ -10,7 +10,7 @@ export default {
 	data (){
 		return {
 			html: '',
-			test: ['A', 'I', 'C', 'D', 'P'],
+			test: ['A', 'I', 'C', 'D', 'P', 'O', 'R', 'G'],
 			interval: null,
 			isVisible: 'visible',
 			isTrans: false
@@ -41,12 +41,20 @@ export default {
 					_.html = dest.join('')
 					.replace(/(\[I)/g, '<i class="gray">//').replace(/(I\])/g, '</i>')
 					.replace(/(\[P)/g, '<p>').replace(/(P\])/g, '</p>')
-					.replace(/(\[A)/g, '<a class="blue" href="https://github.com/dongdongmemeda">').replace(/(A\])/g, '</a>')
+					.replace(/(\[A)/g, '<a class="blue">').replace(/(A\])/g, '</a>')
 					.replace(/(\[D)/g, '<span class="yellow">').replace(/(D\])/g, '</span>')
 					.replace(/(\[C)/g, '<style>').replace(/(C\])/g, '</style>')
+					.replace(/(\[O)/g, '<span class="orange">').replace(/(O\])/g, '</span>')
+					.replace(/(\[R)/g, '<span class="red">').replace(/(R\])/g, '</span>')
+					.replace(/(\[G)/g, '<span class="green">').replace(/(G\])/g, '</span>')
 					.replace(/：/g, '<span class="red">：</span>')
 				_.isTrans = false
 				dest = _.html.split('')
+				}
+				if(document.body.offsetHeight > (window.innerHeight||document.body.clientHeight)){
+					if(/\n$/.test(_.html)){
+						document.body.scrollTop = document.body.scrollHeight
+					}
 				}
 				if(arr.length != 0){
 					let tmp = arr.shift()
@@ -55,6 +63,10 @@ export default {
 				}else{
 					clearInterval(_.interval)
 					_.isVisible = 'hidden'
+					_.interval = null
+					document.querySelectorAll('a').forEach(function(val, index){
+						val.setAttribute('href', val.innerText)
+					})
 				}
 			}, t)
 		}
@@ -70,4 +82,6 @@ span{font-size: 28px;}
 .gray{color: #75715e;}
 .red{color: #f92672;}
 .yellow{color: #e6db74;}
+.orange{color:#fd971f;}
+.green{color: #A6E22E;}
 </style>
