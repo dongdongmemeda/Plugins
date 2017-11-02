@@ -1,7 +1,7 @@
 <template>
 	<pre class="contain">
 		<span id="show" v-html="html"></span>
-		<span id="timer" v-bind:style="{visibility: isVisible}">|</span>
+		<span id="timer" :style="{visibility: isVisible}">|</span>
 	</pre>
 </template>
 <script>
@@ -31,32 +31,22 @@ export default {
 		//  主要运行函数
 		timeout: function (arr, dest){
 			const _ = this, t = 40
-			// let t = Math.random()*100 | 0 + 50
-			// if(t>=120){
-			// 	t = 500
-			// }
 			setTimeout(function(){
 				let d = [...dest]
 				if(d[d.length-1]==']' && _.test.includes(d[d.length-2]) || d[d.length-1]=='：'){
 					_.isTrans = true
 				}
+				_.html = dest.join('')
 				if(_.isTrans){
 					_.html = dest.join('')
-					.replace(/(\[I)/g, '<i class="gray">//')
-					.replace(/(I\])/g, '</i>')
-					.replace(/(\[P)/g, '<p>')
-					.replace(/(P\])/g, '</p>')
-					.replace(/(\[A)/g, '<a class="blue" href="https://github.com/dongdongmemeda">')
-					.replace(/(A\])/g, '</a>')
-					.replace(/(\[D)/g, '<span class="yellow">')
-					.replace(/(D\])/g, '</span>')
-					.replace(/(\[C)/g, '<style>')
-					.replace(/(C\])/g, '</style>')
+					.replace(/(\[I)/g, '<i class="gray">//').replace(/(I\])/g, '</i>')
+					.replace(/(\[P)/g, '<p>').replace(/(P\])/g, '</p>')
+					.replace(/(\[A)/g, '<a class="blue" href="https://github.com/dongdongmemeda">').replace(/(A\])/g, '</a>')
+					.replace(/(\[D)/g, '<span class="yellow">').replace(/(D\])/g, '</span>')
+					.replace(/(\[C)/g, '<style>').replace(/(C\])/g, '</style>')
 					.replace(/：/g, '<span class="red">：</span>')
 				_.isTrans = false
 				dest = _.html.split('')
-				}else{
-					_.html = dest.join('')
 				}
 				if(arr.length != 0){
 					let tmp = arr.shift()
@@ -72,9 +62,9 @@ export default {
 }
 </script>
 <style>
-.contain{margin: 0; padding: 0;}
-span{font-size: 28px;}
+.contain{margin: 0;}
 p{display: inline;}
+span{font-size: 28px;}
 #timer{font-weight: 800;}
 .blue{color: #80c6fc;}
 .gray{color: #75715e;}
