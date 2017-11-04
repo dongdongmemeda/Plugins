@@ -66,9 +66,10 @@ export default {
 					clearInterval(_.interval)
 					_.isVisible = 'hidden'
 					_.interval = null
-					document.querySelectorAll('a').forEach(function(val, index){
-						val.setAttribute('href', val.innerText)
-					})
+					const list = document.querySelectorAll('a')
+					for(let i=0;i<list.length;i++){
+						list[i].setAttribute('href', list[i].innerText)
+					}
 				}
 			}, t)
 		}
