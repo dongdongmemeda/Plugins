@@ -38,8 +38,7 @@ export default {
 				}
 				_.html = dest.join('')
 				if(_.isTrans){
-					_.html = _.html
-					.replace(/(\[I)/g, '<i class="gray">//').replace(/(I\])/g, '</i>')
+					_.html = _.html.replace(/(\[I)/g, '<i class="gray">//').replace(/(I\])/g, '</i>')
 					.replace(/(\[P)/g, '<p>').replace(/(P\])/g, '</p>')
 					.replace(/(\[A)/g, '<a class="blue">').replace(/(A\])/g, '</a>')
 					.replace(/(\[D)/g, '<span class="yellow">').replace(/(D\])/g, '</span>')
@@ -51,12 +50,10 @@ export default {
 				_.isTrans = false
 				dest = _.html.split('')
 				}
-				if(document.body.scrollHeight > window.innerHeight){
-					if(/\n$/.test(html)){
-						document.documentElement.scrollTop = document.body.scrollHeight
-						window.pageYOffset = document.body.scrollHeight
-						document.body.scrollTop = document.body.scrollHeight
-					}
+				if(document.body.scrollHeight>window.innerHeight && /\n$/.test(html)){
+					document.documentElement.scrollTop = document.body.scrollHeight
+					window.pageYOffset = document.body.scrollHeight
+					document.body.scrollTop = document.body.scrollHeight
 				}
 				if(arr.length != 0){
 					let tmp = arr.shift()
