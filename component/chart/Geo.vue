@@ -117,7 +117,11 @@ export default {
             }
             this.chart.setOption(option)
             this.chart.on('click', function(params){
-                alert(params.name+': '+params.value)
+                if(params.data){
+                    alert(params.name+': '+params.data.value[2])
+                }else{
+                    alert(params.name)
+                }
             })
         },
         convert: function(data){
