@@ -4,25 +4,15 @@
     </div>
 </template>
 <script>
-import echarts from 'echarts'
-import 'echarts/map/js/china.js'    //  引入中国地图
 export default {
     props: ["geo"],
     data(){
-        return {
-            chart: {}
-        }
+        return {}
     },
     mounted(){
-        //  使用canvas或者svg引擎渲染
-        this.chart = echarts.init(document.querySelector('.geo'+this.geo.node+' .main'), null, {renderer: 'canvas'})
-        this.chart.showLoading()
-        this.init()
-        this.chart.hideLoading()
-    },
-    methods: {
-        init: function(){
-            const option = {
+        let chart = this.$echarts.init(document.querySelector(this.geo.node+' .main'))
+        this.chartLoad(chart)
+        const option = {
                 title : {
                     text: '中国地图',
                     subtext: '东东么么哒',
@@ -115,15 +105,9 @@ export default {
                 }
                 ]
             }
-            this.chart.setOption(option)
-            this.chart.on('click', function(params){
-                if(params.data){
-                    alert(params.name+': '+params.data.value[2])
-                }else{
-                    alert(params.name)
-                }
-            })
-        },
+        chart.setOption(option)
+    },
+    methods: {
         convert: function(data){
             let res = []
             for(let i=0;i<data.length;i++){
@@ -136,6 +120,9 @@ export default {
                 }
             }
             return res
+        },
+        chartLoad: function(chart){
+            this.$emit('chart', chart)
         }
     }
 }
@@ -148,4 +135,3 @@ export default {
     }
 }
 </style>
-

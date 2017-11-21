@@ -1,36 +1,21 @@
 <template>
-   <div class="pie">
-       <div class="main"></div>
-   </div>
+    <div class="pie">
+        <div class="main"></div>
+    </div>
 </template>
 <script>
-import echarts from 'echarts'
 export default {
     props: ["pie"],
     data(){
-        return {
-            chart: {}
-        }
+        return {}
     },
     mounted(){
-        //  使用canvas或者svg引擎渲染
-        this.chart = echarts.init(document.querySelector('.pie'+this.pie.node+' .main'), null, {renderer: 'canvas'})
-        this.chart.showLoading()
-        this.init()
-        this.chart.hideLoading()
-    },
-    methods: {
-        init: function(){
-            
-            const option = {
+        let chart = this.$echarts.init(document.querySelector(this.pie.node+' .main'))
+        this.chartLoad(chart)
+        const option = {
                 tooltip: {
                     trigger: 'item',
                     formatter: "{a} <br/>{b}: {c} ({d}%)"
-                },
-                legend: {
-                    orient: 'vertical',
-                    left: 0,
-                    data: this.pie.legend
                 },
                 series: [
                     {
@@ -85,10 +70,11 @@ export default {
                     },
                 ]
             }
-            this.chart.setOption(option)
-            this.chart.on('click', function (params) {
-                console.log(params);
-            });
+        chart.setOption(option)
+    },
+    methods: {
+        chartLoad: function(chart){
+            this.$emit('chart', chart)
         }
     }
 }
