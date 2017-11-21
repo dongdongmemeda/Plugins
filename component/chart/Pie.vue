@@ -10,7 +10,7 @@ export default {
         return {}
     },
     mounted(){
-        let chart = this.$echarts.init(document.querySelector(this.pie.node+' .main'))
+        let chart = this.$echarts.init(document.querySelector(this.pie.node+' .main'), 'purple-passion')
         this.chartLoad(chart)
         const option = {
                 tooltip: {

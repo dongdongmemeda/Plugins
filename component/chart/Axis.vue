@@ -10,7 +10,7 @@ export default {
         return {}
     },
     mounted(){
-        const chart = this.$echarts.init(document.querySelector(this.axis.node +' .main'))
+        const chart = this.$echarts.init(document.querySelector(this.axis.node +' .main'), 'purple-passion')
         this.chartLoad(chart)
         let name = [], val = []
         for(let i=this.axis.obj.length-1;i>=0;i--){

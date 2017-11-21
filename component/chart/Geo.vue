@@ -10,7 +10,7 @@ export default {
         return {}
     },
     mounted(){
-        let chart = this.$echarts.init(document.querySelector(this.geo.node+' .main'))
+        let chart = this.$echarts.init(document.querySelector(this.geo.node+' .main'), 'chalk')
         this.chartLoad(chart)
         const option = {
                 title : {
@@ -20,7 +20,7 @@ export default {
                     left: 'center',
                     top: 20,
                     textStyle: {
-                        color: '#333'
+                        color: '#fff'
                     }
                 },
                 tooltip : {
@@ -87,7 +87,7 @@ export default {
                         normal: {
                             formatter: '{b}',
                             position: 'right',
-                            color: 'purple',
+                            color: '#fff',
                             show: true
                         }
                     },
