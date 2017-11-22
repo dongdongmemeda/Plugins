@@ -69,7 +69,7 @@ export default {
                             color: '#d53a35'
                         }
                     },
-                    data: this.convert(this.geo.obj)
+                    data: this.geo.objOne
                 },
                 {
                     name: 'Top 5',
@@ -99,28 +99,13 @@ export default {
                         }
                     },
                     zlevel: 1,
-                    data: this.convert(this.geo.obj.sort(function (a, b) {
-                        return b.value - a.value;
-                    }).slice(0, 6)),
+                    data: this.geo.objTwo
                 }
                 ]
             }
         chart.setOption(option)
     },
     methods: {
-        convert: function(data){
-            let res = []
-            for(let i=0;i<data.length;i++){
-                let geoCoord = this.geo.geo[data[i].name]
-                if(geoCoord){
-                    res.push({
-                        name: data[i].name,
-                        value: geoCoord.concat(data[i].value)
-                    })
-                }
-            }
-            return res
-        },
         chartLoad: function(chart){
             this.$emit('chart', chart)
         }
@@ -129,6 +114,8 @@ export default {
 </script>
 <style lang="less" scoped>
 .geo{
+    width: 100%;
+    height: 100%;
     .main{
         width: 100%;
         height: 100%;

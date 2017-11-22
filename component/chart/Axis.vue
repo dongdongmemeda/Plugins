@@ -12,12 +12,6 @@ export default {
     mounted(){
         const chart = this.$echarts.init(document.querySelector(this.axis.node +' .main'), 'purple-passion')
         this.chartLoad(chart)
-        let name = [], val = []
-        for(let i=this.axis.obj.length-1;i>=0;i--){
-            name.push('')
-            val.push(this.axis.obj[i].value)
-        }
-        console.log(val)
         const option = {
             color: ['#3398DB'],
             tooltip: {
@@ -39,7 +33,7 @@ export default {
             xAxis : [
                 {
                     type : 'category',
-                    data : name,
+                    data : this.axis.name,
                     axisTick: {
                         alignWithLabel: true
                     }
@@ -65,13 +59,13 @@ export default {
                 {
                     name:'PM2.5',
                     type:'bar',
-                    data: val
+                    data: this.axis.val
                 },
                 {
                     name:'PM',
                     type:'line',
                     yAxisIndex: 1,
-                    data: val
+                    data: this.axis.val
                 }
             ]
         }
@@ -86,6 +80,8 @@ export default {
 </script>
 <style lang="less" scoped>
 .axis{
+    width: 100%;
+    height: 100%;
     .main{
         width: 100%;
         height: 100%;
