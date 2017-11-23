@@ -23,7 +23,7 @@ export default {
         initChart: function(){
             var _ = this
             this.$http.get(_.axis.url).then((res)=>{
-                var axisData = res.body.geo
+                var axisData = res.body.axis
                 var name = [], val = []
                 for(let i=0;i<axisData.obj.length;i++){
                     name.push('')
