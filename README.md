@@ -11,11 +11,11 @@
 
 * ### chart文件夹（来源echarts图表封装成vue组件）
 
-    * Main.vue: 主要组件，负责子组件的位置放置
-    * Geo.vue: 地图图表组件
-    * Pie.vue: 饼型图表组件
-    * Axis.vue: 直方图图表组件
-    * Water.vue: 百分比水滴组件
+    Main.vue: 主要组件，负责子组件的位置放置
+    Geo.vue: 地图图表组件
+    Pie.vue: 饼型图表组件
+    Axis.vue: 直方图图表组件
+    Water.vue: 百分比水滴组件
 
 ## jsPlugin文件夹
 
