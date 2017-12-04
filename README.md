@@ -5,11 +5,11 @@
     createdOn: 2017/10/15
    
 ## component文件夹
-* ###  JianLi文件夹 预览地址 [dongdongmemeda](http://dongdongmemeda.com)
+###  JianLi文件夹 预览地址 [dongdongmemeda](http://dongdongmemeda.com)
 
     JianLi.vue: 动态简历已经实现vue组件，只需要输入简历内容
 
-* ### chart文件夹（来源echarts图表封装成vue组件）
+### chart文件夹（来源echarts图表封装成vue组件）
 
     Main.vue: 主要组件，负责子组件的位置放置
     Geo.vue: 地图图表组件
